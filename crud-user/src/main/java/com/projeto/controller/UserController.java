@@ -19,6 +19,12 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 
+	@GetMapping
+	public String index(Model model) {
+		model.addAttribute("users", userRepository.findAll());
+		return "index";
+	}
+
 	@GetMapping("/singup")
 	public String showSingupForm(User user) {
 		return "add-user";
